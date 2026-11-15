@@ -10,7 +10,7 @@ Students talk by voice (no typing) with two characters who tell the **same incid
    | `OPENAI_API_KEY` | your key, starts with `sk-` | **Required** |
    | `CLASS_CODE` | a word students type once, e.g. `tacos5` | Strongly recommended (so strangers can't use your key) |
    | `MAX_QUESTIONS` | `3` | Optional — skip it to use 3 |
-   | `REALTIME_MODEL` | `gpt-realtime-2.1` | Optional — skip it to use gpt-realtime-2.1 |
+   | `REALTIME_MODEL` (or `OPENAI_REALTIME_MODEL`) | `gpt-realtime-2.1` | Optional — skip it to use gpt-realtime-2.1 |
 3. **Deploys → Trigger deploy**. Share the site URL (and the class code) with students.
 
 Your API key stays on Netlify; each browser only gets a short-lived key per conversation.

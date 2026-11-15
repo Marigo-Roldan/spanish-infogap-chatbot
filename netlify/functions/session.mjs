@@ -22,7 +22,7 @@ export default async (req) => {
 
   // Use only the first word, so a value pasted like "gpt-realtime-2.1 (optional)" still works.
   const firstWord = (v) => String(v || '').trim().split(/\s+/)[0];
-  const model = firstWord(process.env.REALTIME_MODEL) || 'gpt-realtime-2.1';
+  const model = firstWord(process.env.REALTIME_MODEL || process.env.OPENAI_REALTIME_MODEL) || 'gpt-realtime-2.1';
   const transcribe = firstWord(process.env.TRANSCRIBE_MODEL) || 'gpt-4o-mini-transcribe';
   const maxQ = parseInt(process.env.MAX_QUESTIONS || '3', 10);
 
