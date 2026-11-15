@@ -5,6 +5,24 @@ const REALTIME_CALLS_URL = 'https://api.openai.com/v1/realtime/calls';
 const START_TEXT = '(El estudiante llega. Saluda, di tu nombre y cuenta tu historia.)';
 const RETURN_TEXT = '(El estudiante regresa. Saluda brevemente y espera su pregunta.)';
 
+// General support phrases: the same for every character and story (no story clues).
+const HELP_PHRASES = [
+  '¿Dónde estabas?',
+  '¿Qué pasó?',
+  '¿Qué viste?',
+  '¿Qué escuchaste?',
+  '¿Cómo te sentiste?',
+  '¿Por qué piensas eso?',
+];
+
+const REFLECTION_QUESTIONS = [
+  'How did the chatbot help you practice Spanish?',
+  'Did the support phrases help you ask questions? Explain.',
+  'What was difficult when talking with the characters?',
+  'What can you do better now or without help?',
+  'What would you change about the chatbot to help you learn better?',
+];
+
 let MAX_Q = 3;
 let stories = [];
 let storyIdx = 0;
@@ -25,6 +43,7 @@ async function init() {
   $('#changeStory').addEventListener('click', changeStory);
   $('#revealBtn').addEventListener('click', revealTruth);
   $('#showText').addEventListener('change', applyTextToggle);
+  renderReflection();
   renderStory();
 }
 
@@ -48,6 +67,8 @@ function renderStory() {
   $('.steps li:nth-child(2) b').textContent = `${MAX_Q} preguntas`;
   $('#conclusion').value = '';
   $('#truth').hidden = true;
+  $('#reflection').hidden = true;   // reappears after both characters in the new story; answers are kept
+  $('#copyMsg').textContent = '';
   $('#revealBtn').disabled = true;
   $('#revealBtn').textContent = '🔒 Ver lo que pasó (termina con las dos personas)';
 
@@ -63,7 +84,22 @@ function renderStory() {
     $('.talk', card).addEventListener('click', () => toggleTalk(p));
     const list = $('.suggest-list', card);
     (p.preguntas || []).forEach(q => {
-      const li = document.createElement('li'); li.textContent = q; list.appendChild(li);
+      const li = document.createElement('li'); li.textContent = q;
+      li.addEventListener('click', () => putInDraft(card, q));
+      list.appendChild(li);
+    });
+    // "¿Necesitas ayuda para preguntar?" — same general phrases for every character and story.
+    const toggle = $('.help-toggle', card);
+    const panel = $('.help-panel', card);
+    toggle.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    HELP_PHRASES.forEach(phrase => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'phrase'; b.textContent = phrase;
+      b.addEventListener('click', () => putInDraft(card, phrase));
+      $('.help-chips', card).appendChild(b);
     });
     if (!list.children.length) $('.suggest', card).hidden = true;
     wrap.appendChild(card);
@@ -71,6 +107,47 @@ function renderStory() {
     updateCard(p.id);
   });
   applyTextToggle();
+}
+
+// Puts a phrase in the student's draft box to edit. Does NOT send it or count it —
+// a question only counts when the student says it out loud.
+function putInDraft(card, text) {
+  const draft = $('.draft-text', card);
+  draft.value = text;
+  draft.focus();
+  // Place the cursor just before the "?" so the student can keep writing.
+  const pos = text.endsWith('?') ? text.length - 1 : text.length;
+  draft.setSelectionRange(pos, pos);
+}
+
+function renderReflection() {
+  const ol = $('.reflection-list');
+  REFLECTION_QUESTIONS.forEach((q, i) => {
+    const li = document.createElement('li');
+    li.textContent = q;
+    const ta = document.createElement('textarea');
+    ta.rows = 3; ta.id = 'reflect-' + i; ta.placeholder = 'Write your answer in English…';
+    li.appendChild(ta);
+    ol.appendChild(li);
+  });
+  $('#copyBtn').addEventListener('click', copyAnswers);
+}
+
+async function copyAnswers() {
+  const story = stories[storyIdx];
+  const lines = [`Historia: ${story.titulo}`, ''];
+  Object.values(personaState).forEach(st => {
+    lines.push(`Notas sobre ${st.persona.nombre}:`, $('.notes', st.card).value.trim() || '—', '');
+  });
+  lines.push('Mi conclusión:', $('#conclusion').value.trim() || '—', '', 'Reflexión sobre el uso del chatbot:');
+  REFLECTION_QUESTIONS.forEach((q, i) => lines.push(`${i + 1}. ${q}`, $('#reflect-' + i).value.trim() || '—', ''));
+  const text = lines.join('\n');
+  try {
+    await navigator.clipboard.writeText(text);
+    $('#copyMsg').textContent = '✓ Copied! Paste it where your teacher asks.';
+  } catch {
+    $('#copyMsg').textContent = 'Could not copy. Select and copy your answers by hand.';
+  }
 }
 
 function applyTextToggle() {
@@ -264,7 +341,10 @@ function onEvent(s, ev) {
       delete s.pendingYou[ev.item_id];
       if (!text) { bubble?.parentElement.remove(); break; }
       if (bubble) bubble.textContent = text; else addMsg(id, 'you', text, 'Tú');
-      if (!isFreeUtterance(text)) registerQuestion(s);
+      if (!isFreeUtterance(text)) {
+        registerQuestion(s);
+        $('.draft-text', personaState[id].card).value = ''; // question was said aloud: clear the draft
+      }
       break;
     }
 
@@ -317,6 +397,7 @@ function finishPersona(s) {
     const b = $('#revealBtn');
     b.disabled = false;
     b.textContent = '🔓 Ver lo que pasó de verdad';
+    $('#reflection').hidden = false;
   }
 }
 

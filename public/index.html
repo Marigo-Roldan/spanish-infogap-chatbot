@@ -48,6 +48,14 @@
       <button id="revealBtn" class="btn" disabled>🔒 Ver lo que pasó (termina con las dos personas)</button>
       <div id="truth" class="truth" hidden></div>
     </section>
+
+    <section id="reflection" class="card reflection" hidden>
+      <h2>Reflexión sobre el uso del chatbot</h2>
+      <p class="reflection-note">🇺🇸 <b>Please answer these questions in English.</b> This reflection does not count as one of your questions.</p>
+      <ol class="reflection-list"></ol>
+      <button id="copyBtn" class="btn secondary">📋 Copy my answers</button>
+      <span id="copyMsg" class="copy-msg" aria-live="polite"></span>
+    </section>
   </main>
 
   <template id="personaTpl">
@@ -66,8 +74,18 @@
       <button class="btn talk"></button>
       <p class="status">Listo/a para hablar.</p>
       <div class="transcript" aria-live="polite"></div>
+      <div class="draft">
+        <label class="draft-label">✏️ Mi pregunta</label>
+        <textarea class="draft-text" rows="2" placeholder="Escribe tu pregunta aquí o elige una frase…"></textarea>
+        <p class="draft-hint">🎙️ Para enviarla, <b>léela en voz alta</b>. Escribir o elegir una frase no cuenta como pregunta.</p>
+        <button type="button" class="btn ghost help-toggle" aria-expanded="false">🤔 ¿Necesitas ayuda para preguntar?</button>
+        <div class="help-panel" hidden>
+          <p class="help-note">Toca una frase. Puedes cambiarla antes de decirla.</p>
+          <div class="help-chips"></div>
+        </div>
+      </div>
       <div class="suggest">
-        <p class="suggest-title">💬 Ideas para preguntar <span>(¡dilas en voz alta!)</span></p>
+        <p class="suggest-title">💬 Ideas para preguntar <span>(toca una para escribirla)</span></p>
         <ul class="suggest-list"></ul>
       </div>
       <label class="notes-label">Mis notas sobre <span class="name2"></span></label>

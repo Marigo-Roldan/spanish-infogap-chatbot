@@ -82,6 +82,26 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 40px; display: grid; g
 .msg.system { background: transparent; color: var(--muted); font-style: italic; align-self: center; font-size: .88rem; }
 .msg .who { display: block; font-size: .75rem; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
 
+.draft { display: flex; flex-direction: column; gap: 6px; }
+.draft-label { font-weight: 700; font-size: .95rem; }
+.draft-text { font-size: 1.05rem; }
+.draft-hint { margin: 0; font-size: .85rem; color: var(--muted); }
+.btn.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); align-self: flex-start; padding: 7px 12px; font-size: .95rem; }
+.btn.ghost[aria-expanded="true"] { background: var(--accent-soft); }
+.help-panel { border: 1px dashed var(--accent); border-radius: 10px; padding: 10px; }
+.help-note { margin: 0 0 6px; font-size: .88rem; color: var(--muted); }
+.help-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.phrase { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .95rem; cursor: pointer; color: var(--ink); }
+.phrase:hover { border-color: var(--accent); background: var(--accent-soft); }
+.suggest-list li { cursor: pointer; }
+.suggest-list li:hover { text-decoration: underline; }
+
+.reflection-note { margin: 4px 0 10px; }
+.reflection-list { padding-left: 22px; margin: 0 0 12px; }
+.reflection-list li { margin-bottom: 12px; font-weight: 600; }
+.reflection-list textarea { margin-top: 6px; font-weight: 400; }
+.copy-msg { margin-left: 10px; color: var(--ok); font-weight: 600; }
+
 .suggest { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; }
 .suggest-title { margin: 0 0 4px; font-weight: 700; font-size: .95rem; }
 .suggest-title span { font-weight: 400; color: var(--muted); }
