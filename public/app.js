@@ -61,7 +61,11 @@ function renderStory() {
     $('.name2', card).textContent = p.nombre;
     $('.rol', card).textContent = p.rol;
     $('.talk', card).addEventListener('click', () => toggleTalk(p));
-    $('.ask', card).addEventListener('submit', e => { e.preventDefault(); askByText(p.id); });
+    const list = $('.suggest-list', card);
+    (p.preguntas || []).forEach(q => {
+      const li = document.createElement('li'); li.textContent = q; list.appendChild(li);
+    });
+    if (!list.children.length) $('.suggest', card).hidden = true;
     wrap.appendChild(card);
     personaState[p.id] = { count: 0, done: false, visited: false, card, persona: p };
     updateCard(p.id);
@@ -102,9 +106,6 @@ function updateCard(id) {
     talk.disabled = false;
     talk.classList.remove('live');
   }
-  const canType = live && session.ready && !session.limitReached && !session.responseActive;
-  $('.ask input', card).disabled = !canType;
-  $('.ask button', card).disabled = !canType;
 }
 
 function setStatus(id, text, cls = '') {
@@ -263,7 +264,7 @@ function onEvent(s, ev) {
       delete s.pendingYou[ev.item_id];
       if (!text) { bubble?.parentElement.remove(); break; }
       if (bubble) bubble.textContent = text; else addMsg(id, 'you', text, 'Tú');
-      registerQuestion(s);
+      if (!isFreeUtterance(text)) registerQuestion(s);
       break;
     }
 
@@ -296,17 +297,12 @@ function registerQuestion(s) {
   updateCard(s.personaId);
 }
 
-function askByText(id) {
-  const s = session;
-  if (!s || s.personaId !== id || s.limitReached || s.responseActive) return;
-  const input = $('.ask input', personaState[id].card);
-  const text = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  addMsg(id, 'you', text, 'Tú');
-  send(s, { type: 'conversation.item.create', item: { type: 'message', role: 'user', content: [{ type: 'input_text', text }] } });
-  send(s, { type: 'response.create' });
-  registerQuestion(s);
+// "Repite, por favor", "No entiendo", "Hola", "Gracias"... do not use up a question.
+function isFreeUtterance(text) {
+  const t = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[¿?¡!.,]/g, '').trim();
+  if (/\b(repit\w*|repetir|despacio|no entiendo|otra vez|como dices)\b/.test(t)) return true;
+  if (/^(como|que)$/.test(t)) return true; // "¿Cómo?" / "¿Qué?"
+  return /^(hola|gracias|muchas gracias|ok|okay|vale|si|no|adios|bueno|perdon)( \w+)?$/.test(t);
 }
 
 function finishPersona(s) {

@@ -1,6 +1,6 @@
 # ¿Qué pasó? — Spanish info-gap voice chatbot
 
-Students talk (by voice or typing) with two characters who tell the **same incident from different perspectives**. Each student gets **3 questions per character**, takes notes, writes a conclusion, then unlocks "what really happened." Language is kept at **novice high**. Uses OpenAI's **gpt-realtime-2.1** over WebRTC.
+Students talk by voice (no typing) with two characters who tell the **same incident from different perspectives**. Each student gets **3 spoken questions per character** (with suggested questions on screen; "Repite, por favor" does not count), takes notes, writes a conclusion, then unlocks "what really happened." Language is kept at **novice high**. Uses OpenAI's **gpt-realtime-2.1** over WebRTC.
 
 ## Deploy on Netlify
 1. In Netlify: **Add new project → Import an existing project → GitHub**, and pick this repository. The build settings come from `netlify.toml` automatically (publish folder `public`, functions in `netlify/functions`); leave the build command empty.
