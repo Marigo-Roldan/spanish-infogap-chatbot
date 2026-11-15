@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Qué pasó? · Vacío de información</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>¿Qué pasó? 🕵️</h1>
+      <p class="sub">Dos personas, una historia. Escucha, pregunta y descubre la verdad.</p>
+    </div>
+    <div class="story-controls">
+      <span id="storyCount" class="pill"></span>
+      <button id="changeStory" class="btn secondary">🔄 Cambiar historia</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="scene card">
+      <h2 id="storyTitle"></h2>
+      <p id="storyScene"></p>
+      <ol class="steps">
+        <li>Haz clic en <b>Hablar</b>. Escucha la historia.</li>
+        <li>Haz <b>3 preguntas</b> a cada persona (con tu voz o por escrito).</li>
+        <li>Toma notas. Compara las dos historias.</li>
+      </ol>
+      <div class="vocab">
+        <span class="vocab-label">Vocabulario útil:</span>
+        <span id="vocabList"></span>
+      </div>
+      <details class="helpers">
+        <summary>Frases útiles para preguntar</summary>
+        <p>¿Qué pasó? · ¿Cuándo? · ¿Dónde? · ¿Por qué? · ¿Quién? · ¿Cómo te sientes? · ¿A qué hora…? · Repite, por favor. · Más despacio, por favor.</p>
+      </details>
+      <label class="toggle"><input type="checkbox" id="showText" checked> Mostrar subtítulos</label>
+    </section>
+
+    <section id="personas" class="personas"></section>
+
+    <section class="card conclusion">
+      <h2>Mi conclusión</h2>
+      <label for="conclusion">¿Qué pasó de verdad? Escribe 3–4 oraciones.</label>
+      <textarea id="conclusion" rows="4" placeholder="Pienso que…"></textarea>
+      <button id="revealBtn" class="btn" disabled>🔒 Ver lo que pasó (termina con las dos personas)</button>
+      <div id="truth" class="truth" hidden></div>
+    </section>
+  </main>
+
+  <template id="personaTpl">
+    <article class="persona card">
+      <div class="persona-head">
+        <div class="avatar"></div>
+        <div>
+          <h2 class="name"></h2>
+          <p class="rol"></p>
+        </div>
+      </div>
+      <div class="qbar">
+        <span class="qlabel">Preguntas:</span>
+        <span class="dots"></span>
+      </div>
+      <button class="btn talk"></button>
+      <p class="status">Listo/a para hablar.</p>
+      <div class="transcript" aria-live="polite"></div>
+      <form class="ask">
+        <input type="text" placeholder="…o escribe tu pregunta aquí" disabled>
+        <button class="btn small" disabled>Enviar</button>
+      </form>
+      <label class="notes-label">Mis notas sobre <span class="name2"></span></label>
+      <textarea class="notes" rows="3" placeholder="¿Qué dice? ¿Qué piensa?"></textarea>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{
+  "historias": [
+    {
+      "id": "fiesta",
+      "titulo": "La fiesta de Sofía",
+      "escena": "Ayer fue la fiesta de cumpleaños de Sofía. Algo pasó con su amigo Diego. Habla con los dos. ¿Qué pasó?",
+      "vocabulario": ["la fiesta", "el cumpleaños", "llegar tarde", "el pastel", "el autobús", "la lluvia", "enojado/a", "triste", "la sorpresa"],
+      "verdad": "Diego no olvidó la fiesta. Compró un pastel de chocolate para Sofía. El autobús se rompió y Diego caminó 40 minutos bajo la lluvia. Por eso llegó tarde y mojado. El pastel era una sorpresa: Diego lo dejó en la cocina con la mamá de Sofía.",
+      "personas": [
+        {
+          "id": "sofia",
+          "nombre": "Sofía",
+          "emoji": "🎂",
+          "voz": "marin",
+          "rol": "Tiene 15 años. Ayer fue su fiesta de cumpleaños.",
+          "historia": "Ayer fue mi fiesta de cumpleaños. La fiesta empezó a las seis. Invité a mi mejor amigo, Diego. Diego no llegó a las seis. No llegó a las siete. Yo estaba triste y enojada. Pienso que Diego olvidó mi fiesta. Diego llegó a las ocho. Su ropa estaba mojada y sucia. No tenía un regalo en las manos. No hablé mucho con él. Después, mi mamá trajo un pastel de chocolate, pero no sé de dónde es el pastel. Pienso que mi mamá lo compró.",
+          "noSabe": "No sabes por qué Diego llegó tarde. No sabes nada del autobús. No sabes que el pastel es de Diego."
+        },
+        {
+          "id": "diego",
+          "nombre": "Diego",
+          "emoji": "🚌",
+          "voz": "cedar",
+          "rol": "Tiene 15 años. Es el mejor amigo de Sofía.",
+          "historia": "Ayer fue el cumpleaños de mi mejor amiga, Sofía. Primero, fui a la pastelería. Compré un pastel de chocolate. Es el pastel favorito de Sofía. Tomé el autobús a las cinco y media. El autobús se rompió en la calle. Llovía mucho. Caminé 40 minutos con el pastel bajo la lluvia. Llegué a la fiesta a las ocho, mojado y sucio. Le di el pastel a la mamá de Sofía en la cocina. Es una sorpresa. Pero Sofía no habló conmigo. Estoy triste. No entiendo por qué Sofía está enojada.",
+          "noSabe": "No sabes que Sofía piensa que olvidaste su fiesta. No sabes si Sofía sabe que el pastel es tuyo."
+        }
+      ]
+    },
+    {
+      "id": "perro",
+      "titulo": "El perro en el parque",
+      "escena": "El sábado pasado, un perro pequeño terminó en el lago del parque. Habla con la dueña del perro y con un chico. ¿Qué pasó?",
+      "vocabulario": ["el perro", "el parque", "el lago", "la pelota", "patear", "correr", "mojado/a", "tener miedo", "gracias"],
+      "verdad": "La pelota de Pablo no tocó a Coco. Coco tomó la pelota en la boca y corrió al lago. Coco saltó al agua. Pablo entró al agua fría y sacó a Coco. Pablo no quería hacer daño: ¡Pablo rescató a Coco!",
+      "personas": [
+        {
+          "id": "ramirez",
+          "nombre": "Señora Ramírez",
+          "emoji": "🐕",
+          "voz": "coral",
+          "rol": "Tiene 70 años. Su perro se llama Coco.",
+          "historia": "El sábado caminé en el parque con mi perro, Coco. Coco es pequeño, blanco y muy simpático. Un chico jugaba al fútbol. El chico pateó la pelota muy fuerte. Yo pienso que la pelota golpeó a Coco. Coco tuvo miedo y corrió. Yo no corro rápido. Busqué a Coco por 20 minutos. Lloré mucho. Después, el chico llegó con Coco. Coco y el chico estaban mojados. Pienso que el chico persiguió a Coco hasta el lago. Le grité al chico. Estoy enojada con él.",
+          "noSabe": "No viste qué pasó en el lago. No sabes que Coco tomó la pelota. No sabes que el chico sacó a Coco del agua."
+        },
+        {
+          "id": "pablo",
+          "nombre": "Pablo",
+          "emoji": "⚽",
+          "voz": "ash",
+          "rol": "Tiene 14 años. Le gusta jugar al fútbol.",
+          "historia": "El sábado jugué al fútbol en el parque. Pateé la pelota. La pelota pasó cerca de un perro pequeño y blanco. No tocó al perro. ¡El perro tomó mi pelota en la boca y corrió! Corrí detrás del perro. El perro corrió al lago y saltó al agua. El perro no nadaba bien. Entré al agua. ¡El agua estaba muy fría! Saqué al perro del agua. Busqué a la dueña. Una señora me gritó. No me dijo gracias. No entiendo por qué está enojada.",
+          "noSabe": "No sabes que la señora piensa que la pelota golpeó al perro. No sabes que la señora piensa que tú perseguiste al perro."
+        }
+      ]
+    },
+    {
+      "id": "sandwich",
+      "titulo": "El sándwich en la cafetería",
+      "escena": "Hoy en la cafetería de la escuela, hay un problema con un sándwich. Habla con Camila y con Marcos. ¿Qué pasó?",
+      "vocabulario": ["la cafetería", "el almuerzo", "el sándwich", "el jamón", "el queso", "la mostaza", "la bolsa", "la mesa", "el piso"],
+      "verdad": "Camila y Marcos tienen la misma bolsa azul y el mismo sándwich de jamón y queso. La mochila de Marcos tiró su bolsa al piso, debajo de la mesa. Marcos comió el sándwich de Camila por error. Por eso el sándwich no tenía mostaza. Marcos no es un ladrón: fue un error.",
+      "personas": [
+        {
+          "id": "camila",
+          "nombre": "Camila",
+          "emoji": "🥪",
+          "voz": "shimmer",
+          "rol": "Es estudiante. Siempre trae su almuerzo.",
+          "historia": "Siempre traigo mi almuerzo a la escuela. Hoy tengo un sándwich de jamón y queso en una bolsa azul. No me gusta la mostaza, entonces mi sándwich no tiene mostaza. Puse mi bolsa en la mesa y fui por agua. Cuando regresé, ¡mi bolsa no estaba! Vi a Marcos. Marcos comía un sándwich de jamón y queso. Tenía una bolsa azul. ¡Marcos comió mi sándwich! Estoy muy enojada. Ahora no tengo almuerzo.",
+          "noSabe": "No sabes que Marcos tiene una bolsa azul igual. No miraste debajo de la mesa."
+        },
+        {
+          "id": "marcos",
+          "nombre": "Marcos",
+          "emoji": "🎒",
+          "voz": "echo",
+          "rol": "Es estudiante. Su mamá prepara su almuerzo.",
+          "historia": "Mi mamá prepara mi almuerzo todos los días. Hoy tengo un sándwich de jamón y queso en una bolsa azul. Puse mi bolsa en la mesa. Fui al baño con mi mochila. Cuando me levanté, mi mochila tocó algo en la mesa, pero no vi qué. Regresé, vi una bolsa azul en la mesa y comí el sándwich. Qué raro: mi mamá siempre pone mostaza, pero hoy el sándwich no tenía mostaza. Después, Camila gritó: ¡Es mi sándwich! No entiendo. Yo no soy un ladrón.",
+          "noSabe": "No sabes que tu bolsa está en el piso, debajo de la mesa. No sabes que Camila tiene una bolsa azul igual."
+        }
+      ]
+    },
+    {
+      "id": "restaurante",
+      "titulo": "Problema en el restaurante",
+      "escena": "El sábado por la noche, hubo un problema en el restaurante El Sol. Habla con un cliente y con el mesero. ¿Qué pasó?",
+      "vocabulario": ["el restaurante", "el mesero", "el cliente", "pedir", "los tacos", "el pollo", "la carne", "picante", "esperar", "el ruido"],
+      "verdad": "El hijo del señor Torres gritó: ¡Quiero tacos de carne! El señor dijo: Sí, sí, para calmar a su hijo, no para cambiar la orden. Pero Andrés pensó que el señor cambió la orden. Había mucho ruido y Andrés no escuchó 'sin picante'. Solo había un cocinero porque el otro estaba enfermo. Por eso esperaron mucho.",
+      "personas": [
+        {
+          "id": "torres",
+          "nombre": "Señor Torres",
+          "emoji": "🌮",
+          "voz": "verse",
+          "rol": "Es el cliente. Fue al restaurante con su familia.",
+          "historia": "El sábado fui al restaurante El Sol con mi esposa y mi hijo. Mi hijo tiene seis años. Pedí tacos de pollo sin picante, porque mi hijo no come picante. Mi hijo gritó mucho, pero es normal, es pequeño. Esperamos 45 minutos. ¡Mucho tiempo! Después, el mesero trajo tacos de carne con salsa picante. Estoy muy enojado. Pienso que el mesero no escucha y no trabaja bien.",
+          "noSabe": "No sabes que el mesero pensó que cambiaste la orden. No sabes que hay solo un cocinero hoy."
+        },
+        {
+          "id": "andres",
+          "nombre": "Andrés",
+          "emoji": "🍽️",
+          "voz": "sage",
+          "rol": "Es mesero en el restaurante El Sol.",
+          "historia": "Trabajo en el restaurante El Sol. El sábado hubo muchas personas y mucha música. Había mucho ruido. Un señor pidió tacos de pollo. Escribí: tacos de pollo. Después, su hijo gritó: ¡Quiero tacos de carne! Y el señor dijo: Sí, sí. Entonces, cambié la orden a tacos de carne. Hoy solo hay un cocinero, porque el otro cocinero está enfermo. Por eso la comida tardó mucho. Traje los tacos de carne y el señor se enojó mucho. No entiendo por qué.",
+          "noSabe": "No escuchaste 'sin picante'. No sabes que el señor dijo 'sí, sí' solo para calmar a su hijo."
+        }
+      ]
+    }
+  ]
+}

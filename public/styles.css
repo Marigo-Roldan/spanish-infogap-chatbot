@@ -1,0 +1,92 @@
+:root {
+  --bg: #f6f3ee;
+  --card: #ffffff;
+  --ink: #1f2430;
+  --muted: #5d6372;
+  --line: #e4ded4;
+  --accent: #d9480f;
+  --accent-ink: #ffffff;
+  --accent-soft: #fff1e8;
+  --you: #e7f0ff;
+  --them: #f3efe8;
+  --ok: #2b8a3e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;
+}
+.top {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: space-between; align-items: center;
+  padding: 20px 24px; max-width: 1100px; margin: 0 auto;
+}
+h1 { margin: 0; font-size: 1.9rem; }
+h2 { margin: 0 0 6px; font-size: 1.25rem; }
+.sub { margin: 4px 0 0; color: var(--muted); }
+main { max-width: 1100px; margin: 0 auto; padding: 0 24px 40px; display: grid; gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+
+.story-controls { display: flex; gap: 10px; align-items: center; }
+.pill { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+
+.btn {
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 10px;
+  padding: 10px 16px; font-size: 1rem; font-weight: 600; cursor: pointer;
+}
+.btn:hover:not(:disabled) { filter: brightness(1.08); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.secondary { background: var(--ink); }
+.btn.small { padding: 8px 12px; font-size: .9rem; }
+.btn.live { background: #c92a2a; }
+
+.steps { margin: 10px 0; padding-left: 20px; }
+.vocab { margin-top: 8px; }
+.vocab-label { font-weight: 600; margin-right: 6px; }
+.chip { display: inline-block; background: var(--them); border-radius: 8px; padding: 2px 8px; margin: 3px 4px 3px 0; font-size: .9rem; }
+.helpers { margin-top: 10px; color: var(--muted); }
+.helpers summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.toggle { display: inline-block; margin-top: 10px; font-size: .9rem; color: var(--muted); }
+
+.personas { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 760px) { .personas { grid-template-columns: 1fr; } }
+
+.persona { display: flex; flex-direction: column; gap: 10px; }
+.persona.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.persona.done { border-color: var(--ok); }
+.persona-head { display: flex; gap: 12px; align-items: center; }
+.avatar { font-size: 2.4rem; width: 60px; height: 60px; display: grid; place-items: center; background: var(--accent-soft); border-radius: 50%; flex: none; }
+.rol { margin: 0; color: var(--muted); font-size: .95rem; }
+
+.qbar { display: flex; align-items: center; gap: 8px; }
+.qlabel { font-weight: 600; font-size: .9rem; }
+.dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--accent); display: inline-block; margin-right: 4px; }
+.dot.used { background: var(--accent); }
+
+.status { margin: 0; font-size: .95rem; color: var(--muted); min-height: 1.4em; }
+.status.speaking::before { content: "🔊 "; }
+.status.listening::before { content: "🎙️ "; }
+
+.transcript {
+  min-height: 140px; max-height: 300px; overflow-y: auto;
+  background: #fbfaf7; border: 1px solid var(--line); border-radius: 10px; padding: 10px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.transcript.hidden-text .msg.them { color: transparent; text-shadow: 0 0 8px rgba(0,0,0,.35); user-select: none; }
+.msg { padding: 8px 10px; border-radius: 10px; max-width: 90%; font-size: .97rem; }
+.msg.them { background: var(--them); align-self: flex-start; }
+.msg.you { background: var(--you); align-self: flex-end; }
+.msg.system { background: transparent; color: var(--muted); font-style: italic; align-self: center; font-size: .88rem; }
+.msg .who { display: block; font-size: .75rem; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+
+.ask { display: flex; gap: 8px; }
+.ask input { flex: 1; padding: 9px 10px; border: 1px solid var(--line); border-radius: 10px; font-size: 1rem; }
+.notes-label { font-weight: 600; font-size: .9rem; }
+textarea { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 10px; font: inherit; resize: vertical; }
+
+.conclusion label { display: block; margin-bottom: 6px; }
+.conclusion .btn { margin-top: 10px; }
+.truth { margin-top: 12px; background: #ebfbee; border: 1px solid #b2f2bb; border-radius: 10px; padding: 12px; }
