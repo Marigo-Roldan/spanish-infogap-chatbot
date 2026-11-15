@@ -9,7 +9,7 @@ const json = (status, obj) =>
 export default async (req) => {
   if (req.method !== 'POST') return json(405, { error: 'Method not allowed' });
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = (process.env.OPENAI_API_KEY || '').trim();
   if (!apiKey) return json(500, { error: 'Falta OPENAI_API_KEY en Netlify (Environment variables).' });
 
   let body;
@@ -20,8 +20,10 @@ export default async (req) => {
     return json(401, { error: 'Código de la clase incorrecto.', needCode: true });
   }
 
-  const model = process.env.REALTIME_MODEL || 'gpt-realtime-2.1';
-  const transcribe = process.env.TRANSCRIBE_MODEL || 'gpt-4o-mini-transcribe';
+  // Use only the first word, so a value pasted like "gpt-realtime-2.1 (optional)" still works.
+  const firstWord = (v) => String(v || '').trim().split(/\s+/)[0];
+  const model = firstWord(process.env.REALTIME_MODEL) || 'gpt-realtime-2.1';
+  const transcribe = firstWord(process.env.TRANSCRIBE_MODEL) || 'gpt-4o-mini-transcribe';
   const maxQ = parseInt(process.env.MAX_QUESTIONS || '3', 10);
 
   // Read the same files the page uses, from this site, so there is one place to edit them.

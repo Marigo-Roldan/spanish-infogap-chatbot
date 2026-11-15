@@ -150,13 +150,13 @@ async function startSession(p) {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ storyId: stories[storyIdx].id, personaId: id, code: getClassCode() }),
       });
-      data = await r.json();
+      data = await r.json().catch(() => ({}));
       if (!data.needCode) break;
       const code = window.prompt(attempt ? 'Código incorrecto. Escribe el código de la clase:' : 'Escribe el código de la clase:');
       if (code === null) throw new Error('Necesitas el código de la clase.');
       setClassCode(code.trim());
     }
-    if (!r.ok || !data.value) throw new Error(data.error || 'No se pudo conectar.');
+    if (!r.ok || !data.value) throw new Error(data.error || `No se pudo conectar (error ${r.status}).`);
     if (session !== s) return; // user clicked away
 
     s.pc = new RTCPeerConnection();

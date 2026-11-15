@@ -4,13 +4,13 @@ Students talk (by voice or typing) with two characters who tell the **same incid
 
 ## Deploy on Netlify
 1. In Netlify: **Add new project → Import an existing project → GitHub**, and pick this repository. The build settings come from `netlify.toml` automatically (publish folder `public`, functions in `netlify/functions`); leave the build command empty.
-2. Go to **Site configuration → Environment variables** and add:
-   | Variable | Value |
-   |---|---|
-   | `OPENAI_API_KEY` | your OpenAI key (**required**) |
-   | `CLASS_CODE` | a word students must type once, e.g. `tacos5` (strongly recommended, so strangers can't use your key) |
-   | `MAX_QUESTIONS` | `3` (optional) |
-   | `REALTIME_MODEL` | `gpt-realtime-2.1` (optional) |
+2. Go to **Site configuration → Environment variables** and add these. In the **Value** box, type only what is in the "Value" column — nothing else.
+   | Key | Value | Needed? |
+   |---|---|---|
+   | `OPENAI_API_KEY` | your key, starts with `sk-` | **Required** |
+   | `CLASS_CODE` | a word students type once, e.g. `tacos5` | Strongly recommended (so strangers can't use your key) |
+   | `MAX_QUESTIONS` | `3` | Optional — skip it to use 3 |
+   | `REALTIME_MODEL` | `gpt-realtime-2.1` | Optional — skip it to use gpt-realtime-2.1 |
 3. **Deploys → Trigger deploy**. Share the site URL (and the class code) with students.
 
 Your API key stays on Netlify; each browser only gets a short-lived key per conversation.
